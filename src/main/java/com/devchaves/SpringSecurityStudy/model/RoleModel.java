@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Table(name = "tb_roles")
-public class RoleModel {
+public class RoleModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +21,13 @@ public class RoleModel {
 
     private String name;
 
-    public enum values {
+    public enum RoleType {
         BASIC(2L),
         ADMIN(1L);
 
         long roleId;
 
-        values(long roleId) {
+        RoleType(long roleId) {
             this.roleId = roleId;
         }
 
